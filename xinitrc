@@ -1,5 +1,5 @@
 exec /usr/bin/awesome
 
-if [ -f $HOME/.Xmodmap ]; then
-    /usr/bin/xmodmap $HOME/.Xmodmap
-fi
+#if [ -f $HOME/.Xmodmap ]; then
+#    /usr/bin/xmodmap $HOME/.Xmodmap
+#fi
