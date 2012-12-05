@@ -66,3 +66,37 @@ URxvt*scrollBar_right: false
 
 # scrollbar style - rxvt (default), plain, next, or xterm
 URxvt*scrollstyle: rxvt
+
+#####
+### urxvt-perls from https://github.com/meunnich/urxvt-perls
+URxvt.perl-lib: .perl/
+## keyboard-select
+# h/j/k/l:    Move cursor left/down/up/right (also with arrow keys)
+# g/G/0/^/$/H/M/L/f/F/;/,/w/W/b/B/e/E: More vi-like cursor movement keys
+# '/'/?:      Start forward/backward search
+# n/N:        Repeat last search, N: in reverse direction
+# Ctrl-f/b:   Scroll down/up one screen
+# Ctrl-d/u:   Scroll down/up half a screen
+# v/V/Ctrl-v: Toggle normal/linewise/blockwise selection
+# y/Return:   Copy selection to primary buffer, Return: deactivate afterwards
+# q/Escape:   Deactivate keyboard selection mode
+URxvt.perl-ext-common: ...,keyboard-select
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
+URxvt.keysym.M-s: perl:keyboard-select:search
+## url-select
+# j/k:      Select next downward/upward URL (also with arrow keys)
+# g/G:      Select first/last URL (also with home/end key)
+# o/Return: Open selected URL in browser, Return: deactivate afterwards
+# y:        Copy (yank) selected URL and deactivate selection mode
+# q/Escape: Deactivate URL selection mode
+URxvt.perl-ext-common: ...,url-select
+URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.url-select.launcher:firefox
+URxvt.url-select.underline:true
+## clipboard
+URxvt.perl-ext-common: ...,clipboard
+URxvt.keysym.M-c:   perl:clipboard:copy
+URxvt.keysym.M-v:   perl:clipboard:paste
+URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
+URxvt.clipboard.copycmd:  xclip -i -selection clipboard
+URxvt.clipboard.pastecmd: xclip -o -selection clipboard
